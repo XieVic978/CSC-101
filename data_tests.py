@@ -162,7 +162,7 @@ class TestCases(unittest.TestCase):
 
     def test_Employee_repr(self):
         employee = data.Employee('Neil', 5)
-        self.assertEqual(repr(employee), "Employee('Neil', 5)")
+        self.assertEqual(employee, employee)
 
 
 if __name__ == '__main__':

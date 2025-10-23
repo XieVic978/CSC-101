@@ -74,6 +74,13 @@ class TestCases(unittest.TestCase):
         result = add_prices(price1, price2)
         self.assertEqual(expected, result)
 
+    def test_Price_add3(self):
+        price1 = Price(3, 1)
+        price2 = Price(2, 1)
+        expected = Price(5, 2)
+        result = add_prices(price1, price2)
+        self.assertEqual(expected, result)
+
     # Part 5
     def test_perimeter1(self):
         rect = Rectangle(Point(1, 1), Point(2, 0))
@@ -104,21 +111,45 @@ class TestCases(unittest.TestCase):
     # Part 7
     def test_circle_bound_1(self):
         rec = Rectangle(Point(-5, 20), Point(12, 10))
-
+        expected = (Circle(Point(3.5,15.0),math.sqrt(((12-3.5)**2) + ((10 - 15)**2))))
+        result = circle_bound(rec)
+        self.assertEqual(expected,result)
     def test_circle_bound_2(self):
-        pass
+        rec = Rectangle(Point(-10,20),Point(10,-15))
+        expected = Circle(Point(0,2.5),math.sqrt(((10-0)**2) + ((-15-2.5)**2)))
+        result = circle_bound(rec)
+        self.assertEqual(expected,result)
 
     # Part 8
     def test_higher_than_average1(self):
-        emps = [Employee('Sam', 3000.0), Employee('Tom', 5000.0), \
+        emps = [Employee('Sam', 3000.0), Employee('Tom', 5000.0),
                 Employee('Mary', 4000.0)]
+
+        expected = ['Tom']
+        result = higher_than_average(emps)
+        self.assertEqual(expected,result)
 
     def test_higher_than_average2(self):
-        emps = [Employee('Sam', 4000.0), Employee('Tom', 4000.0), \
+        emps = [Employee('Sam', 4000.0), Employee('Tom', 4000.0),
                 Employee('Mary', 4000.0)]
+        expected = []
+        result=higher_than_average(emps)
+        self.assertEqual(expected,result)
 
     def test_higher_than_average(self):
-        pass
+        emps = [Employee('Victor',50000), Employee('Ryan',80000),Employee('Malic',80000),
+                Employee('John',100),Employee('Yitong',2)]
+        expected = ['Victor','Ryan','Malic']
+        result = higher_than_average(emps)
+        self.assertEqual(expected,result)
+
+    def test_higher_than_average3(self):
+        emps = []
+        expected = []
+        result = higher_than_average(emps)
+        self.assertEqual(expected, result)
+
+
 
 
 if __name__ == '__main__':

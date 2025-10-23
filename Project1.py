@@ -46,8 +46,9 @@ Steps:
 5) repeat until finished
 '''
 # Implementation
-newList = []
+
 def long_list(newList2:list[list[int]])->list[list[int]]:
+    newList = []
     for sublist in newList2:
         if len(sublist) >= 3:
             newList.append(sublist)
@@ -109,6 +110,8 @@ def add_prices(p1: Price, p2: Price)->Price:
         newCents = cents%100
         cents = cents // 100
         dollars+=cents
+    else:
+        newCents = p1.cents + p2.cents
 
     return Price(dollars,newCents)
 
@@ -118,7 +121,10 @@ input:Rectangle object
 output: Rectangle object
 purpose: to calculate the perimeter of the rectangle object
 Steps:
-1)
+1) Find the width by taking the absolute difference between top_left.x and bottom_right.x
+2) Find the height by taking the absolute difference between top_left.y and bottom_right.y
+3) Calculate the perimeter using the formula: 2 * (width + height)
+4) Return the total perimeter as a float
 '''
 # Implementation
 
@@ -150,23 +156,60 @@ def are_in_negative_quadrant(values:list[Point])->list[Point]:
 
 # Part 7
 '''Design Recipe (Write your design recipe here!)
-input:
-output:
-purpose:
+input: rectangle object
+output: circle object
+purpose: to return the radius and center of the circle that encloses the rectangle, and that the circle touches the edge at all 4 corners
 Steps:
-1)
+1)find center_x by adding left x point by right x point and dividing it by 2
+2)find center_y by adding left y point by right y point and dividing it by 2
+3)take a point, left or right doesnt matter. to find radius, subtract center_x by that x point and then square it. do the same for the y value. add both x and y values and then sqrt the value
+4) return the center and the radius
 '''
 # Implementation
+
+
 def circle_bound(rect:Rectangle)->Circle:
+   center_x = (rect.top_left.x + rect.bottom_right.x) / 2
+   center_y = (rect.top_left.y +rect.bottom_right.y)/2
+
+   radius = math.sqrt(((rect.bottom_right.x - center_x)**2) + ((rect.bottom_right.y - center_y)**2))
+   return Circle(Point(center_x,center_y),radius)
+
+
+
+
 
 
 # Part 8
 '''Design Recipe (Write your design recipe here!)
-input:
-output:
-purpose:
+input: Employee object
+output: list of string
+purpose: return the employees that are paid higher than the average pay of all employees
 Steps:
-1)
+1) Check if the list is empty, if so return an empty list
+2) Create a variable to store total_pay initialized to 0
+3) Loop through all employees and add each employee's pay_rate to total_pay
+4) Calculate average_pay by dividing total_pay by the number of employees
+5) Create a new empty list called newEmployees
+6) Loop through all employees again
+7) If an employee's pay_rate is greater than average_pay, append their name to newEmployees
+8) Return newEmployees list
 '''
 # Implementation
+
+def higher_than_average(value:list[Employee])->list[str]:
+    average_pay = 0
+    total_pay = 0
+    newEmployees =[]
+    if len(value)==0:
+        return newEmployees
+    for i in range(len(value)):
+        total_pay+=value[i].pay_rate
+    average_pay = total_pay / len(value)
+
+    for i in range(len(value)):
+        if value[i].pay_rate > average_pay:
+            newEmployees.append(value[i].name)
+
+    return newEmployees
 
