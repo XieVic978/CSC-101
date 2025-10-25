@@ -1,7 +1,6 @@
-# Name:
+# Name:Victor
 # Section:
 
-import data
 from Project1 import *
 import unittest
 
@@ -81,6 +80,13 @@ class TestCases(unittest.TestCase):
         result = add_prices(price1, price2)
         self.assertEqual(expected, result)
 
+    def test_Price_add3(self):
+        p1 = Price(2, 100)
+        p2 = Price(3, 100)
+        expected = Price(7, 0)
+        result = add_prices(p1, p2)
+        self.assertEqual(expected, result)
+
     # Part 5
     def test_perimeter1(self):
         rect = Rectangle(Point(1, 1), Point(2, 0))
@@ -113,10 +119,15 @@ class TestCases(unittest.TestCase):
         rec = Rectangle(Point(-5, 20), Point(12, 10))
         expected = (Circle(Point(3.5,15.0),math.sqrt(((12-3.5)**2) + ((10 - 15)**2))))
         result = circle_bound(rec)
-        self.assertEqual(expected,result)
+        self.assertAlmostEqual(expected,result)
     def test_circle_bound_2(self):
         rec = Rectangle(Point(-10,20),Point(10,-15))
         expected = Circle(Point(0,2.5),math.sqrt(((10-0)**2) + ((-15-2.5)**2)))
+        result = circle_bound(rec)
+        self.assertEqual(expected,result)
+    def test_circle_bound_3(self):
+        rec = Rectangle(Point(-4, 2), Point(-1, -1))
+        expected = (Circle(Point(-2.5, 0.5), 2.1213203435596424))
         result = circle_bound(rec)
         self.assertEqual(expected,result)
 

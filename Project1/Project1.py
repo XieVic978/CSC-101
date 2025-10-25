@@ -1,7 +1,7 @@
 #Name:Victor
 #Section:
 
-from data import *
+from Project1.data import *
 
 # Write your functions for each part in the space below.
 

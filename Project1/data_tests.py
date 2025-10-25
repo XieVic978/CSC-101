@@ -1,4 +1,4 @@
-import data
+from Project1 import data
 import unittest
 
 
