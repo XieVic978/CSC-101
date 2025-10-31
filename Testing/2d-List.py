@@ -1,12 +1,8 @@
-list1 = [[1,2,3,4],[]]
-newList=[]
-for sublist in list1:
-    if len(sublist)>0:
-        pass
-        total = 0
-        for item in sublist:
-            total+=item
-        avg = total / len(sublist)
-        newList.append(avg)
+from datetime import datetime
+import time
 
-print(newList)
+current_time = datetime.now().strftime("%I:%M %p")
+idx = 0
+while True:
+    print(current_time)
+    time.sleep(10)

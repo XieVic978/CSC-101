@@ -35,6 +35,7 @@ class TestCases(unittest.TestCase):
         self.assertAlmostEqual(20, point.y)
 
 
+
     def test_Point_2(self):
         point = data.Point(4, 19)
         self.assertAlmostEqual(4, point.x)

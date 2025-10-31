@@ -1,4 +1,4 @@
-# Name:
+# Name: Victor
 # Section:
 #########################################################
 import math
@@ -56,4 +56,15 @@ class Point:
                 type(other) == Point and
                 math.isclose(self.x, other.x) and
                 math.isclose(self.y, other.y))
+
+
+
+
+def x_coordinates(self,value:list[Point])->list:
+    newList =[]
+
+    for idx in range(len(value)):
+        newList.append(value[idx].x)
+    return newList
+
 
