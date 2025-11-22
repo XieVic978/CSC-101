@@ -156,17 +156,22 @@ def validate_route(city_link:list[list[str]],city:list[str])->bool:
 
 
 # Part 6
-'''Design Recipe (Write your design recipe here!)
+'''
+Design Recipe (Write your design recipe here!)
 input: list of integer
 output: none or int
 purpose: to find the index at longest continious number
 Steps:
-1) 
 
-lst = [1, 1, 2, 2, 1, 1, 1, 3]
-      [0, 1, 2, 3, 4, 5, 6, 7]
-      
-      [0,1]
+
+1) Initialize longest_num, longest_index, and num variables
+2) Loop through list comparing each pair of adjacent numbers
+3) If numbers match: increment num and check if it's the new longest
+4) If numbers don't match: reset num to 1
+5) Return the index where the longest repetition starts
+
+
+
 '''
 # Implementation
 def long(lst:list[int]):
